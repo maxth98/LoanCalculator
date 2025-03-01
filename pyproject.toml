@@ -1,0 +1,22 @@
+[project]
+name = "loancalculator"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Maximilian Theiner",email = "maximilian.theiner@amelian.li"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "waitress (>=3.0.2,<4.0.0)",
+    "multiprocess (>=0.70.17,<0.71.0)",
+    "flask (>=3.1.0,<4.0.0)",
+    "apscheduler (>=3.11.0,<4.0.0)",
+    "numpy (>=2.2.3,<3.0.0)",
+    "pandas (>=2.2.3,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
