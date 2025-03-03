@@ -31,5 +31,6 @@ def calc_repayment_plan(principal, nom_intr, rdmp_intr, spec_repay_amt, spec_rep
     df = df[['Monat', 'Jahr', 'Anfangsschuld', 'Zinsen', 'Tilgung', 'Sondertilgung', 'Restschuld']]
     for i in ['Anfangsschuld', 'Zinsen', 'Tilgung', 'Restschuld']:
         df[i] = df[i].apply(lambda x: round(x, 2))
+
     df.set_index('Monat', inplace=True)
     return df

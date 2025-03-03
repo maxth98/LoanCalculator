@@ -6,7 +6,7 @@ authors = [
     {name = "Maximilian Theiner",email = "maximilian.theiner@amelian.li"}
 ]
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = "=3.12"
 dependencies = [
     "waitress (>=3.0.2,<4.0.0)",
     "multiprocess (>=0.70.17,<0.71.0)",

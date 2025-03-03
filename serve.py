@@ -7,9 +7,7 @@ import os
 from waitress import serve
 from multiprocess import cpu_count
 from flask import Flask, request, make_response, send_file
-from werkzeug.utils import secure_filename
 from flask_caching import Cache
-from apscheduler.schedulers.background import BackgroundScheduler
 
 from annuity import calc_repayment_plan
 
@@ -26,7 +24,6 @@ app = Flask(__name__)
 config = {
     "DEBUG": False,
     "CACHE_TYPE": "SimpleCache",
-    "CACHE_DEFAULT_TIMEOUT": configuration["schedule"] * 60
 }
 cache = Cache(config=config)
 cache.init_app(app)
@@ -60,16 +57,7 @@ def predict_user_questions():
         return make_response(f"Error: {str(e)}", 500)
 
 
-def back_proc():
-    global configuration
-    print("Completed.")
-
-
 if __name__ == '__main__':
-    scheduler = BackgroundScheduler()
-    scheduler.add_job(func=back_proc, trigger="interval", minutes=configuration["schedule"])
-    scheduler.start()
-
     num_workers = cpu_count()
     print("Starting server..")
     serve(app, host='0.0.0.0', port=configuration["port"], threads=num_workers, connection_limit=1000000)
