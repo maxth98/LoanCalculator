@@ -40,12 +40,11 @@ def predict_user_questions():
         principal = params.get("principal", type=int)
         duration = params.get("duration", type=int)
         nom_intr = params.get("nom_intr", type=float)
-        rdmp_intr = params.get("rdmp_intr", type=float)
         repay_amt = params.get("repay_amt", default=0, type=int)
-        repay_period = params.get("repay_period", default=0, type=int)
+        period = params.get("period", default="Monatlich", type=str)
         filename = params.get("filename", default="tilgungsplan.xlsx")
 
-        repayment_plan = calc_repayment_plan(principal, nom_intr, rdmp_intr, repay_amt, repay_period, duration)
+        repayment_plan = calc_repayment_plan(principal, nom_intr, duration, repay_amt, period)
         repayment_plan.to_excel(filename)
 
         filename = os.path.join(os.getcwd(), filename)
