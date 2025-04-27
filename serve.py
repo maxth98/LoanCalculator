@@ -37,10 +37,10 @@ def predict_user_questions():
     global configuration
     try:
         params = request.args
-        principal = params.get("principal", type=int)
+        principal = params.get("principal", type=float)
         duration = params.get("duration", type=int)
         nom_intr = params.get("nom_intr", type=float)
-        repay_amt = params.get("repay_amt", default=0, type=int)
+        repay_amt = params.get("repay_amt", default=0, type=float)
         period = params.get("period", default="Monatlich", type=str)
         filename = params.get("filename", default="tilgungsplan.xlsx")
 
